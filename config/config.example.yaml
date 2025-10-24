@@ -1,0 +1,36 @@
+# Cloud Economizer Configuration
+
+# Cloud Provider Settings
+aws:
+  enabled: true
+  regions:
+    - us-east-1
+    - us-west-2
+  profile: default
+
+azure:
+  enabled: false
+  subscription_id: ""
+  tenant_id: ""
+
+gcp:
+  enabled: false
+  project_id: ""
+  credentials_file: ""
+
+# Analysis Settings
+analysis:
+  lookback_days: 30
+  min_savings_threshold: 100  # Minimum monthly savings to report (USD)
+
+# AI Settings
+ai:
+  enabled: false  # Set to true and provide OPENAI_API_KEY for AI insights
+  model: gpt-4
+  confidence_threshold: 0.7
+
+# Output Settings
+output:
+  format: json
+  include_scripts: true
+  terraform_version: "1.5.0"
