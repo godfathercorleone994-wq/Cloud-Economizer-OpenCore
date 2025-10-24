@@ -127,19 +127,19 @@ class ReportGenerator:
     {% for category, data in categories.items() %}
     <div class="category">
         <h2>{{ category }}</h2>
-        <p><strong>Findings:</strong> {{ data.count }} | <strong>Potential Savings:</strong> <span class="savings">${{ "%.2f"|format(data.savings) }}/month</span></p>
+        <p><strong>Findings:</strong> {{ data['count'] }} | <strong>Potential Savings:</strong> <span class="savings">${{ "%.2f"|format(data['savings']) }}/month</span></p>
         
-        {% for item in data.items[:10] %}
+        {% for item in data['items'][:10] %}
         <div class="finding">
-            <strong>{{ item.resource_type }}:</strong> {{ item.resource_id }}<br>
-            <strong>Issue:</strong> {{ item.issue }}<br>
-            <strong>Recommendation:</strong> {{ item.recommendation }}<br>
-            <strong>Est. Savings:</strong> <span class="savings">${{ "%.2f"|format(item.estimated_monthly_savings) }}/month</span>
+            <strong>{{ item.get('resource_type', '') }}:</strong> {{ item.get('resource_id', '') }}<br>
+            <strong>Issue:</strong> {{ item.get('issue', '') }}<br>
+            <strong>Recommendation:</strong> {{ item.get('recommendation', '') }}<br>
+            <strong>Est. Savings:</strong> <span class="savings">${{ "%.2f"|format(item.get('estimated_monthly_savings', 0)) }}/month</span>
         </div>
         {% endfor %}
         
-        {% if data.items|length > 10 %}
-        <p><em>... and {{ data.items|length - 10 }} more findings</em></p>
+        {% if data['items']|length > 10 %}
+        <p><em>... and {{ data['items']|length - 10 }} more findings</em></p>
         {% endif %}
     </div>
     {% endfor %}
