@@ -2,7 +2,7 @@
 boto3>=1.28.0
 azure-mgmt-compute>=30.0.0
 azure-mgmt-storage>=21.0.0
-azure-mgmt-sql>=4.0.0
+azure-mgmt-sql>=4.0.0b24
 azure-identity>=1.14.0
 google-cloud-compute>=1.14.0
 google-cloud-storage>=2.10.0
